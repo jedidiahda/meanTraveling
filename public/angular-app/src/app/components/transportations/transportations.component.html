@@ -1,0 +1,38 @@
+<div>
+  <div class="header">Transportions</div>
+  <div class="form-content">
+    <!--transportation form-->
+    <app-transportations-form [hidden]="!this.authService.isLoggedIn" [travelingId]=travelingId [tranId]=tranId (onSaveEvent)="reload(0)"></app-transportations-form>
+    <hr/>
+    <button [hidden]="!this.authService.isLoggedIn" class="btn btn-secondary" (click)="addNew()">Add New</button>
+    <!--table-->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Duration(Hours)</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of transportations">
+          <td>{{t.type}}</td>
+          <td>{{t.duration}}</td>
+          <td>
+            <a [hidden]="!this.authService.isLoggedIn" class="fa-solid fa-pen-to-square" (click)="onEdit(t._id)"></a>
+          </td>
+          <td>
+            <a [hidden]="!this.authService.isLoggedIn" class="fa-solid fa-circle-minus" (click)="onDelete(t._id)"></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!--paging-->
+    <app-paging    
+    [totalDocs]="totalDocs"
+    (pageClickEvent)="reload($event)">
+    </app-paging>
+  </div>
+
+</div>

@@ -1,0 +1,78 @@
+<div>
+  
+  <div class="form-content "> 
+    <div class="input-group col-md-4">
+      <input
+        type="text"
+        class="form-control mb-3"
+        [(ngModel)]="destination"
+        placeholder="destination"
+      />
+      <span>&nbsp;</span>
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          (click)="onSearch()"
+          type="button"
+        >
+          Search
+        </button>
+        <span>&nbsp;</span>
+        <button
+          [hidden]="!this.authService.isLoggedIn"
+          class="btn btn-outline-secondary"
+          routerLink="/travelings/add"
+          type="button"
+        >
+          Add new
+        </button>
+      </div>
+    </div>
+
+    <div>&nbsp;</div>
+    <!--Table-->
+    <table class="table">
+      <thead class="thead-light">
+        <th scope="col">Destination</th>
+        <th scope="col">Stay At</th>
+        <th scope="col">Length (Days)</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of travelings">
+          <td>{{ t.destination }}</td>
+          <td>{{ t.stayAt }}</td>
+          <td>{{ t.length | number: "1.0-1" }}</td>
+          <td>
+            <a
+              [hidden]="!this.authService.isLoggedIn"
+              class="fa-solid fa-pen-to-square"
+              routerLink="/travelings/{{ t._id }}"
+              alt="edit"
+            ></a>
+            <a 
+            [hidden]="this.authService.isLoggedIn"
+            class="fa-solid fa-eye"
+            routerLink="/travelings/{{ t._id }}"
+            alt="view"
+            ></a>
+          </td>
+          <td>
+            <a
+              [hidden]="!this.authService.isLoggedIn"
+              class="fa-solid fa-circle-minus"
+              alt="delete"
+              (click)="deleteOne(t._id)"
+            ></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!--Paging-->
+    <app-paging
+      [totalDocs]="totalDocs"
+      (pageClickEvent)="reload($event)"
+    ></app-paging>
+  </div>
+</div>

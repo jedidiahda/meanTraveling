@@ -1,0 +1,32 @@
+
+<div class="form-content">
+  <form [formGroup]="travelingForm" (ngSubmit)="onSubmit()">
+
+    <label for="destination">Destination</label>
+    <input type="text" id="destination" formControlName="destination" class="form-control" required="true"/>
+
+    <label>Stay at</label>
+    <input type="text" formControlName="stayAt" class="form-control"  required="true" />
+
+    <label>Length</label>
+    <input type="text" formControlName="length"  class="form-control" required="true"/>
+    <div *ngIf="travelingForm.value.length < 0" class="alert alert-danger">
+      Length should be greater than 0
+    </div>
+
+    <button class="btn btn-secondary" (click)="onTransportClick()" [disabled]="!travelingId">Transportions</button>
+
+
+    <div *ngIf="this.authService.isLoggedIn" class="form-group">
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="!travelingForm.valid"
+      >
+        Save
+      </button>
+      
+    </div>
+  </form>
+  
+</div>

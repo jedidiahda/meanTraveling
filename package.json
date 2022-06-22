@@ -1,0 +1,23 @@
+{
+  "name": "traveling-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "backend": "nodemon --inspect",
+    "frontend": "npm start --prefix ./public/angular-app",
+    "start": "npm-run-all --parallel backend frontend"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.4"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

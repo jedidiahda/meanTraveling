@@ -1,0 +1,72 @@
+<form *ngIf="!this.authService.isLoggedIn" class="form-register" #registerForm="ngForm" (ngSubmit)="onSubmit()">
+  <h1 class="h6 mb-3 font-weight-normal">Please register</h1>
+  <label for="name">Name</label>
+  <input
+    type="text"
+    id="name"
+    name="name"
+    class="form-control"
+    placeholder="name"
+    required
+    autofocus="true"
+    ngModel
+  />
+
+  <label for="username">User name</label>
+  <input
+    type="text"
+    id="username"
+    name="username"
+    class="form-control"
+    placeholder="user name"
+    required
+    ngModel
+  />
+
+  <label for="password">Password</label>
+  <input
+    type="password"
+    id="password"
+    name="password"
+    class="form-control"
+    placeholder="password"
+    required
+    ngModel
+    #password="ngModel"
+  />
+
+
+  <label for="repeatPassword">Confirm Password</label>
+  <input
+    type="password"
+    id="repeatPassword"
+    name="repeatPassword"
+    class="form-control"
+    placeholder="Confirm password"
+    required
+    ngModel
+    #repeatPassword="ngModel"
+  />
+
+  <div
+    *ngIf="repeatPassword.valid && (repeatPassword.dirty || repeatPassword.touched)"  >
+    <div
+      *ngIf="registerForm.value.password != registerForm.value.repeatPassword"
+      class="alert alert-danger"
+    >
+      Password and confirm password should be the same.
+    </div>
+  </div>
+
+  <button
+    class="btn btn-primary btn-block"
+    type="submit"
+    [disabled]="!registerForm.valid"
+  >
+    Register
+  </button>
+
+  <div *ngIf="this.errorMsg != ''" class="alert alert-danger" >
+    {{this.errorMsg}}
+  </div>
+</form>

@@ -1,0 +1,6 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="">Home</a>
+  <a class="navbar-brand" routerLink="travelings">Traveling</a>
+  <a *ngIf="!this.authService.isLoggedIn" class="navbar-brand" routerLink="register">Register</a>
+  <app-login-bar></app-login-bar>
+</nav>

@@ -1,0 +1,90 @@
+<form class="form-signin" #loginForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">@</span>
+      </div>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        class="form-control"
+        required="true"
+        autofocus="true"
+        ngModel
+        placeholder="Username"
+      />
+    </div>
+
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+      </div>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        class="form-control"
+        placeholder="password"
+        required="true"
+        ngModel
+      />
+    </div>
+
+    <button
+      class="btn btn-primary btn-block"
+      type="submit"
+      [disabled]="!loginForm.valid"
+    >
+      Login
+    </button>
+  </div>
+  <div class="error-text" *ngIf="errorMsg != ''">
+    {{ errorMsg }}
+  </div>
+</form>
+
+<!-- <form class="form-signin" #loginForm="ngForm" (ngSubmit)="onSubmit()">
+  <h1 class="h6 mb-3 font-weight-normal">Please sign in</h1>
+  <label for="username" class="sr-only">User name</label>
+  <input
+    type="text"
+    id="username"
+    name="username"
+    class="form-control"
+    placeholder="username"
+    required="true"
+    autofocus="true"
+    ngModel
+  />
+
+  <label for="password" class="sr-only">Password</label>
+  <input
+    type="password"
+    id="password"
+    name="password"
+    class="form-control"
+    placeholder="password"
+    required="true"
+    ngModel
+  />
+  <div class="alert alert-danger" *ngIf="errorMsg != ''">
+    {{ errorMsg }}
+  </div>
+  <div class="form-group">
+    <button
+      class="btn btn-primary btn-block"
+      type="submit"
+      [disabled]="!loginForm.valid"
+    >
+      Sign in
+    </button>
+  </div>
+
+  <div class="mb-3">
+    <label>Not a memeber?</label>
+    <span>&nbsp;</span>
+    <a routerLink="/register">Register</a>
+  </div>
+</form> -->

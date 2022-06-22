@@ -1,0 +1,6 @@
+<nav>
+  <ul class="pagination">
+    <li class="page-item"><button class="page-link" (click)="onPrevious()" [disabled]="currentPage <= 0">Previous</button></li>
+    <li class="page-item"><button class="page-link" (click)="onNext()" [disabled]="currentPage == totalPages-1" >Next</button></li>
+  </ul>
+</nav>
