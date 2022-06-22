@@ -55,7 +55,7 @@ import { ErrorInterceptor } from './helpers/ErrorInterceptor';
       {path:'travelings/:travelingId',component:TravelingFormComponent},
       {path:'travelings/:travelingId/transportations',component:TransportationsComponent},
       {path:'register',component:RegisterComponent},
-      // {path:'login',component:LoginFormComponent},
+      {path:'login',component:LoginFormComponent},
       {path:'**',component:PageErrorComponent}
     ])
   ],
