@@ -23,7 +23,9 @@ export default function() {
 
   return (
     <div className="login">
-      <label>Hi {Authentication.getInstance().username} !</label>
+      {Authentication.getInstance().token != null &&
+        <label>Hi {Authentication.getInstance().username} !</label>
+      }
       {(Authentication.getInstance().token != null) && (
         <a className="btn btn-primary ms-2 me-1" onClick={() => onLogout()}>Logout</a>
       )}

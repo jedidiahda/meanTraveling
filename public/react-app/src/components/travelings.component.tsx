@@ -93,9 +93,13 @@ export default function Travelings() {
           Search
         </button>
         <span>&nbsp;</span>
-        <button className="btn btn-outline-secondary" type="button" onClick={() => onAddNew()}>
+        {
+          Authentication.getInstance().token &&
+          <button className="btn btn-outline-secondary" type="button" onClick={() => onAddNew()}>
           Add new
-        </button>
+          </button>
+        }
+
       </div>
     </div>
     
